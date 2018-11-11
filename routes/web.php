@@ -11,15 +11,22 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+// Route for search view, if authenticated
+Route::view('/', 'search')->middleware('auth');
 
-//$router->get('/', 'EnergisaController@search');
-Route::get('/', 'EnergisaController@search');
+// Route for results. If accessed by get, rediret to search view
+Route::match(['get', 'post'], '/resultado', 'EnergisaController@result');
+// Route::post('/resultado', 'EnergisaController@result');
+// Route::get('/resultado', 'EnergisaController@result_error_get');
 
-Route::post('resultado', 'EnergisaController@result');
+// Route for help page
+Route::view('/ajuda', 'help')->middleware('auth');
 
-//Route::redirect('/resultado', '/', 301);
+// Route for contact page
+Route::view('/contato', 'contact')->middleware('auth');
 
-Route::view('/sobre', 'sobre');
+// Route for authentication
+Auth::routes();
+
+// Alternative route for search page
+Route::get('/home', 'HomeController@index')->name('home');
