@@ -1,52 +1,6 @@
-<!-- resources/views/quote.blade.php -->
+@extends('layouts.app')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Consulta à Base de Dados da Energisa</title>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link href='http://fonts.googleapis.com/css?family=Alegreya:400,700|Roboto+Condensed' rel='stylesheet' type='text/css'>
-</head>
-<body>
-	<nav class="navbar navbar-light bg-light justify-content-between" style="border-bottom: 3px solid #f37021;">
-		<img src="/img/energisa-logo.png" class="d-inline-block align-top" alt="">
-		<ul class="nav nav-pills justify-content-end">
-		  <li class="nav-item">
-			<a class="nav-link active" href="/">Pesquisa</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="ajuda">Ajuda</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="contato">Contato</a>
-		  </li>
-		  @guest
-			  <li class="nav-item">
-				  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-			  </li>
-		  @else
-			  <li class="nav-item dropdown">
-				<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-					{{ Auth::user()->name }} <span class="caret"></span>
-				</a>
-
-				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="{{ route('logout') }}"
-					   onclick="event.preventDefault();
-									 document.getElementById('logout-form').submit();">
-						{{ __('Logout') }}
-					</a>
-
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-						@csrf
-					</form>
-				</div>
-			  </li>
-		  @endguest
-		</ul>
-	</nav>
-	
+@section('content')
 	<div class="container">
 		<div class="alert alert-info alert-dismissible fade show mt-5" role="alert">
 		  <h4 class="alert-heading">Importante!</h4>
@@ -60,12 +14,12 @@
 	</div>
 
 	<div class="row">
-		<div class="col-11 mt-5">
+		<div class="col-11 mt-2">
 			<a class="btn btn-outline-primary float-right" href="/" role="button">Nova Consulta</a>
 		</div>
 	</div>
 	
-	<div class="container-fluid mt-5 mb-5">
+	<div class="container-fluid mt-4 mb-4">
 		<table class="table table-striped table-sm">
 		  <thead>
 			<tr>
@@ -101,9 +55,4 @@
 		  </tbody>
 		</table>
 	</div>
-	<script src="js/popper.min.js"></script>
-	<script src="js/jquery-3.2.1.slim.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/energisa.js"></script>
-</body>
-</html>
+@endsection
