@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
 	<script src="{{ asset('js/popper.min.js') }}" defer></script>
 	<script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}" defer></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
