@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="alert alert-info alert-dismissible fade show mt-5" role="alert">
 		  <h4 class="alert-heading">Importante!</h4>
-		  <p>Para obter o endereço completo, assim como o consumo da residência, é necessário copiar o valor da Unidade Consumidora (campo CDC) e inserí-lo na página da
+		  <p>Para obter o consumo da residência, é necessário copiar o valor da Unidade Consumidora (campo CDC) e inseri-lo na página da
 		  <a href="https://www.energisa.com.br/paginas/servicos-online/autoatendimento/extrato-e-2via.aspx" target="blank">Energisa</a> para obter a 2ª via da fatura.</p>
 		  
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -45,11 +45,18 @@
 				  <td>{{ $person->cpf_cnpj }}</td>
 				  <td>{{ $person->cdc }}</td>
 				  <td>{{ $person->nome }}</td>
-				  <td>{{ $person->telefone }}, {{ $person->telefone2 }}</td>
+				  <td>
+					  @if($person->telefone != 0)
+						{{ $person->telefone }}
+					  @endif
+					  @if($person->telefone2 != 0)
+						, {{ $person->telefone2 }}
+					  @endif
+				  </td>
 				  <td>{{ $person->email }}</td>
-				  <td>{{ $person->logradouro }}, {{ $person->bairro }}, {{ $person->municipio }}, {{ $person->cep }}</td>
+				  <td>{{ $person->logradouro }}, {{ $person->numero }}, {{ $person->complemento }}, {{ $person->bairro }}, {{ $person->municipio }}, {{ $person->cep }}</td>
 				  <td>{{ $person->lat }}, {{ $person->lng }}</td>
-				  <td>{{ $person->data_contrato->format('d/m/Y') }}</td>
+				  <td>{{ $person->data_contrato->format('d/m/Y H:i:s') }}</td>
 			  </tr>
 			@endforeach
 		  </tbody>

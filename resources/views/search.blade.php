@@ -5,8 +5,8 @@
 		<!-- Alerta -->
 		<div class="alert alert-info alert-dismissible fade show mt-5 mb-5" role="alert">
 		  <h4 class="alert-heading">Importante!</h4>
-		  <p>Esse sistema é de uso temporário, até que sua base seja importada no sistema <strong>ATLAS</strong>. Há algumas inconsistências na base, que tentarão ser sanadas junto à Energisa.
-		  Então, se não for possível encontrar o registro, especialmente a partir do <strong>CPF/CNPJ</strong>, não quer dizer que não exista. Tente utilizar outros campos como filtros.</p>
+		  <p>Esse sistema é de uso temporário, até que sua base seja importada no sistema <strong>ATLAS</strong>. Há algumas inconsistências na base,
+		  então, se não for possível encontrar uma pessoa, especialmente a partir do <strong>CPF/CNPJ</strong>, não quer dizer que a mesma não exista. Tente utilizar outros campos como filtros.</p>
 		  <hr>
 		  <p>É possível utilizar o caractere coringa '%' para substituir uma cadeia qualquer de caracteres (quando não se tem certeza do nome completo, por exemplo)
 			e o caractere '_' para substituir 1 (um) caractere (quando não se tem certeza sobre a grafia de uma palavra). Isso pode ser útil para pesquisar fragmentos de nomes.</p>
