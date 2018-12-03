@@ -29,8 +29,8 @@ class CreateEnergisaCadastroTable extends Migration
 			$table->string('bairro', 50);
 			$table->integer('cep');
 			$table->string('municipio', 50);
-			$table->float('lat', 8, 4)->nullable();
-			$table->float('lng', 8, 4)->nullable();
+			$table->float('lat', 8, 6)->nullable();
+			$table->float('lng', 8, 6)->nullable();
 			$table->dateTime('data_contrato');
 			
 			$table->engine = 'InnoDB';

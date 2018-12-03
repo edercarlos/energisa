@@ -29,7 +29,9 @@
     <div id="app">
 	
 		<nav class="navbar navbar-light navbar-gray justify-content-between">
-			<img src="/img/energisa-logo.png" class="d-inline-block align-top" alt="">
+			<img src="/img/dpf-logo.png" height="53" class="d-inline-block align-top" alt="">
+			<img src="/img/energisa-logo.png" class="d-inline-block align-top energisa-logo" alt="">
+			<!--<strong>ENERGISA/PF</strong>-->
 			<ul class="nav nav-pills justify-content-end">
 			  @guest
 				  <li class="nav-item">
@@ -39,12 +41,12 @@
 				  <li class="nav-item">
 					<a class="nav-link active" href="/">Consulta</a>
 				  </li>
-				  <!--<li class="nav-item">
+				  <li class="nav-item">
 					<a class="nav-link" href="ajuda">Ajuda</a>
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link" href="contato">Contato</a>
-				  </li>-->
+				  </li>
 				  <li class="nav-item dropdown">
 					<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 						{{ Auth::user()->name }} <span class="caret"></span>
@@ -67,7 +69,7 @@
 		</nav>
         
 
-        <main class="py-4">
+        <main id="main" class="py-4">
             @yield('content')
         </main>
     </div>

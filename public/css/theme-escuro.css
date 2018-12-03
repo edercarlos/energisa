@@ -1,0 +1,118 @@
+/* ========================================================================
+   Component: layout     background: #000000 url("../img/bg.png") top left repeat;
+
+ ========================================================================== */
+
+ body {
+	background-image:linear-gradient(to bottom,#030303 0,#121d2f 100%);
+    background-size: 100% auto;
+}
+ 
+body{
+  color: #eadede !important;
+}
+
+.txt-pdf {
+    font-size: 1.3rem !important;
+    color: #fff !important;
+}
+
+.txt-msgLogin {
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: 1.5rem !important;
+}
+ 
+.footer {
+color: #7DA0B8 !important;
+} 
+ 
+ body,
+.wrapper > section {
+  background-color: #f5f7fa;
+}
+.wrapper > .aside {
+  background-color: #ffffff;
+}
+
+.panel {
+	background-color: transparent;
+}
+
+.panel-heading {
+	color: #7DA0B8;
+}
+
+#kc-content {
+	background-color: #0B0E13;
+	padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+}
+
+#kc-container-wrapper {
+    background-color: #0B0E13;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+
+#kc-registration {
+    border-top: 1px solid #2f2a2a !important;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.form-control {
+	color: #888;
+	background-color: #12151A;
+    border: 1px solid #1F2126;
+}
+
+.form-control:hover {
+	border-color: #1F2126;
+}
+
+.form-control:focus {
+	border-color: rgba(251, 208, 33, 1);
+}
+
+.btn-primary {
+background-color: rgba(251, 208, 33, 0.4);
+background-image: linear-gradient(to bottom, rgba(251, 208, 33, 0.4) 0%, rgba(251, 208, 33, 0.4) 100%);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1cace8', endColorstr='#ff1998cc', GradientType=0);
+border-color: #D3B321;
+color: #000000;
+}
+
+.btn-primary:hover {
+    color: #000000;
+	background-color: rgba(251, 208, 33, 1);
+	border-color: #D3B321;
+}
+
+
+.topnavbar {
+	background-color: #030303;
+	background-image: linear-gradient(to right,#030303 0,#030303 100%);
+}
+
+.offsidebar {
+	background-color: #121d2f;
+	border-left: 1px solid #030303;
+
+}
+
+.text-muted {
+  color: #909fa7;
+}
+
+.form-control::-moz-placeholder {
+  color: #b7bac9;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #b7bac9;
+}
+.form-control::-webkit-input-placeholder {
+  color: #b7bac9;
+}
