@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Adldap\Laravel\Facades\Adldap;
 
 class LoginController extends Controller
@@ -60,6 +61,13 @@ class LoginController extends Controller
         $username = $credentials[$this->username()];
         $password = $credentials['password'];
         
+
+		// test if user has permission to access the system by looking into the users_allowed table
+		/*********************************************/
+		$user_allowed = DB::table('users_allowed')->where($this->username(), $username)->first();
+		if (!$user_allowed) return false;
+		/*********************************************/
+		
 		
         $user_format = env('LDAP_USER_FORMAT', 'cn=%s,'.env('LDAP_BASEDN', ''));
         $userdn = sprintf($user_format, $username);
@@ -72,7 +80,7 @@ class LoginController extends Controller
         if(Adldap::auth()->attempt($userdn, $password, $bindAsUser = true)) {
             // the user exists in the LDAP server, with the provided password
             
-            $user = \App\User::where($this->username(), $username) -> first();
+            $user = \App\User::where($this->username(), $username)->first();
             if (!$user) {
                 // the user doesn't exist in the local database, so we have to create one
                 

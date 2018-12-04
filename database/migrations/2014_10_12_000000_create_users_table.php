@@ -31,7 +31,9 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique(); // was 'email'
             $table->string('password');
             $table->string('name'); // to be read from LDAP
-            $table->string('phone'); // extra field to read from LDAP
+            $table->string('cpf'); // extra field to read from LDAP
+            $table->string('email'); // extra field to read from LDAP
+            $table->string('lotacao'); // extra field to read from LDAP
             $table->rememberToken();
             $table->timestamps();
         });

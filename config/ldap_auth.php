@@ -263,7 +263,13 @@ return [
 
         'name' => 'cn',
 		
-		'phone' => 'telephonenumber', // added
+		// 'phone' => 'telephonenumber', // added
+		
+		'cpf' => 'cpf', // added
+		
+		'email' => 'mail', // added
+		
+		'lotacao' => 'physicalDeliveryOfficeName', // added
 
     ],
 
