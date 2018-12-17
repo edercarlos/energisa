@@ -121,6 +121,8 @@ return [
         'ldap' => [
 
             'discover' => env('LDAP_USER_ATTRIBUTE', 'userprincipalname'), // was just 'userprincipalname',
+			
+			'user_format' => env('LDAP_USER_FORMAT', 'uid=%,ou=servidor,ou=pessoa,ou=dpf,dc=dpf,dc=gov,dc=br'),
 
             'authenticate' => 'distinguishedname',
 

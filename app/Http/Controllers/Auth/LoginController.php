@@ -42,15 +42,40 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 	
+	/**
+     * Get the user attribute to synchronize and retrieve on database (`username`).
+     *
+     * @return string
+     */
 	public function username()
 	{
 	    return config('ldap_auth.usernames.eloquent');
+    }
+	
+	/**
+     * Get the user attribute to authenticate on LDAP (`uid`).
+     *
+     * @return string
+     */
+	public function ldap_auth_config($key)
+	{
+	    return config('ldap_auth.usernames.ldap.' . $key);
+    }
+	
+	/**
+     * Get the configurations to handle the LDAP.
+     *
+     * @return string
+     */
+	public function ldap_config($key)
+	{
+		return config('ldap.connections.default.settings.' . $key);
     }
 
     protected function validateLogin(Request $request)
 	{
         $this->validate($request, [
-            $this->username() => 'required|string|regex:/^\w+$/',
+            $this->username() => 'required|string|regex:/^[\w\.]+$/',
             'password' => 'required|string',
         ]);
     }
@@ -68,11 +93,11 @@ class LoginController extends Controller
 		if (!$user_allowed) return false;
 		/*********************************************/
 		
-		
-        $user_format = env('LDAP_USER_FORMAT', 'cn=%s,'.env('LDAP_BASEDN', ''));
+		// get config values from config files
+        // $user_format = env('LDAP_USER_FORMAT', 'cn=%s,'.env('LDAP_BASEDN', ''));
+        $user_format = $this->ldap_auth_config('user_format') ? $this->ldap_auth_config('user_format') : 'cn=%s,' . $this->ldap_config('base_dn');
         $userdn = sprintf($user_format, $username);
 
-        
         // you might need this, as reported in
         // [#14](https://github.com/jotaelesalinas/laravel-simple-ldap-auth/issues/14):
         // Adldap::auth()->bind($userdn, $password);
@@ -112,7 +137,10 @@ class LoginController extends Controller
     
     protected function retrieveSyncAttributes($username)
 	{
-        $ldapuser = Adldap::search()->where(env('LDAP_USER_ATTRIBUTE'), '=', $username)->first();
+		// get config LDAP_USER_ATTRIBUTE value from config files
+        // $ldapuser = Adldap::search()->where(env('LDAP_USER_ATTRIBUTE'), '=', $username)->first();
+        $ldapuser = Adldap::search()->where($this->ldap_auth_config('discover'), '=', $username)->first();
+
         if ( !$ldapuser ) {
             // log error
             return false;

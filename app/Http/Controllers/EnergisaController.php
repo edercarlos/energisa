@@ -52,15 +52,15 @@ class EnergisaController extends Controller
 			//461.056.381-91
 			$rules = array(
 				'cpf_cnpj'    => ['nullable', 'regex:/^(\d{0,2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2})|(\d{0,3}\.?\d{3}\.?\d{3}-?\d{2})$/'],
-				'nome'        => ['nullable', 'regex:/^[a-zA-Z% _]+$/'],
+				'nome'        => ['nullable', 'regex:/^[a-zA-ZÀ-ú% _]+$/'],
 				'telefone'    => ['nullable', 'regex:/^[0-9\(\)\- \+]+$/'],
-				'logradouro'  => ['nullable', 'regex:/^[a-zA-Z0-9\% _]+$/'],
-				'complemento' => ['nullable', 'regex:/^[a-zA-Z0-9\% _]+$/'],
+				'logradouro'  => ['nullable', 'regex:/^[a-zA-ZÀ-ú0-9\% _]+$/'],
+				'complemento' => ['nullable', 'regex:/^[a-zA-ZÀ-ú0-9\% _]+$/'],
 				// 'numero'      => ['nullable', 'regex:/^[a-zA-Z0-9\% _\/\\]+$/'],
 				'numero'      => ['nullable', 'regex:/^[0-9]+|[sSnN\/%]+$/'],
-				'bairro'      => ['nullable', 'regex:/^[a-zA-Z% _]+$/'],
+				'bairro'      => ['nullable', 'regex:/^[a-zA-ZÀ-ú% _]+$/'],
 				'cep'         => ['nullable', 'max:9', 'regex:/^(\d{5}-?\d{3})$/'],
-				'municipio'   => ['nullable', 'regex:/^[a-zA-Z% _]+$/']
+				'municipio'   => ['nullable', 'regex:/^[a-zA-ZÀ-ú% _]+$/']
 			);
 			$validator = Validator::make($request->all(), $rules);
 
@@ -99,7 +99,7 @@ class EnergisaController extends Controller
 				if ($request->filled('bairro'))
 					$person = $person->where('bairro', 'LIKE', $request->input('bairro'));
 				if ($request->filled('cep'))
-					$person = $person->where('cep', $cep);
+					$person = $person->whereRaw('REPLACE(cep, \'-\', \'\') LIKE ?', $cep);
 				if ($request->filled('municipio'))
 					$person = $person->where('municipio', 'LIKE', $request->input('municipio'));
 				
