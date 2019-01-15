@@ -44,9 +44,9 @@
             <div role="tabpanel">
                <!-- Nav tabs-->
                <!-- Tab panes-->
-               <div class="tab-content">
+               <!--<div class="tab-content">
                   <div id="app-settings" role="tabpanel" class="tab-pane fade active in">
-                     <!--<div class="p">
+                     <div class="p">
                         <h4 class="text-muted text-thin">Temas</h4>
                         <div class="table-grid mb">
                            <div class="col mb">
@@ -76,9 +76,9 @@
                               </div>
                            </div>
                         </div>
-                     </div>-->
+                     </div>
                   </div>
-			</div>	  
+			</div>	  -->
             </div>
          </nav>
          <!-- END Off Sidebar (right)-->

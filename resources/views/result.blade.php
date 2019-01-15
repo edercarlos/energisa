@@ -15,7 +15,10 @@
 
 	<div class="row">
 		<div class="col-11 mt-2">
-			<a class="btn btn-outline-primary float-right" href="/" role="button">Nova Consulta</a>
+			<div class="container">
+				<span class="badge badge-pill badge-dark" style="margin-top:12px;">&Uacute;ltima atualiza&ccedil;&atilde;o da base realizada em 09/11/2018</span>
+				<a class="btn btn-outline-primary float-right" href="/" role="button">Nova Consulta</a>
+			</div>
 		</div>
 	</div>
 	

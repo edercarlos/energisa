@@ -269,6 +269,8 @@ return [
 		
 		'cpf' => 'cpf', // added
 		
+		'matricula' => 'employeeNumber', // added
+		
 		'email' => 'mail', // added
 		
 		'lotacao' => 'physicalDeliveryOfficeName', // added
