@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\LogsTrait;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Adldap\Laravel\Facades\Adldap;
 
 class LoginController extends Controller
 {
+	use LogsTrait;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -123,10 +125,19 @@ class LoginController extends Controller
                 }
             }
             
+			
+			// echo "<pre>";print_r($request->session()->all());echo "</pre>";die;
+			// echo "<pre>";print_r($user);echo "</pre>";die;
+			
+			
             // by logging the user we create the session, so there is no need to login again (in the configured time).
             // pass false as second parameter if you want to force the session to expire when the user closes the browser.
             // have a look at the section 'session lifetime' in `config/session.php` for more options.
             $this->guard()->login($user, true);
+			
+			// call the LogsTrait function to insert a new event register in logs table
+			$this->insertLog('efetuou login no sistema');
+			
             return true;
         }
         
@@ -202,4 +213,12 @@ class LoginController extends Controller
         $property->setAccessible(true);
         return $property->getValue($obj);
     }
+	
+	public function logout()
+	{
+		// call the LogsTrait function to insert a new event register in logs table
+		$this->insertLog('efetuou logout no sistema');
+		Auth::logout();
+		return redirect($this->redirectTo);
+	}
 }

@@ -8,8 +8,11 @@ use App\Models\Energisa;
 
 use Illuminate\Http\Request;
 
+use App\Http\Traits\LogsTrait;
+
 class EnergisaController extends Controller
 {
+	use LogsTrait;
 	 /*
     |--------------------------------------------------------------------------
     | Energisa Controller
@@ -106,7 +109,18 @@ class EnergisaController extends Controller
 				// $person = $person->toSql();
 				// dd($person);
 				$person = $person->get();
-
+				
+				// build the params variable to register the log
+				$params = '';
+				foreach ($request->all() as $field => $value) {
+                    if($field != '_token' && isset($value))
+						$params .= $field . '=' . $value . ';';
+                }
+				$params = substr($params, 0, -1);
+				
+				// call the LogsTrait function to insert a new event register in logs table
+				$this->insertLog('realizou uma consulta com os parametros', $params);
+				
 				return view('result', ['people' => $person]);
 			}
 		}
